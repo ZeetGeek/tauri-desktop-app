@@ -1,0 +1,44 @@
+{
+    "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+    "productName": "tauri-desktop-app",
+    "version": "0.1.0",
+    "identifier": "com.casinostars.dev",
+    "build": {
+        "frontendDist": "../out",
+        "devUrl": "http://localhost:3000",
+        "beforeDevCommand": "npm run dev",
+        "beforeBuildCommand": "npm run build"
+    },
+    "app": {
+        "windows": [
+            {
+                "title": "tauri-desktop-app",
+                "width": 800,
+                "height": 600,
+                "resizable": true,
+                "fullscreen": false
+            }
+        ],
+        "security": {
+            "csp": null
+        }
+    },
+    "bundle": {
+        "createUpdaterArtifacts": true,
+        "active": true,
+        "targets": "all",
+        "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"]
+    },
+    "plugins": {
+        "updater": {
+            "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDlGQzZGRjU0OUZDRjI0MzkKUldRNUpNK2ZWUC9HbnpWelNSWXJ4WTAweEpGZnV5S0gvMkxCSmRZM3BkUDlWYUxxcVNXNHUxc28K",
+            "endpoints": [
+                "https://releases.myapp.com/{{target}}/{{arch}}/{{current_version}}",
+                "https://github.com/user/repo/releases/latest/download/latest.json"
+            ],
+            "windows": {
+                "installMode": "passive"
+            }
+        }
+    }
+}
